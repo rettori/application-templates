@@ -159,7 +159,7 @@
             "metadata": {
                 "name": "this-app-http-route",
                 "labels": {
-                    "application": this-app"
+                    "application": "this-app"
                 },
                 "annotations": {
                     "description": "Route for application's http service."
