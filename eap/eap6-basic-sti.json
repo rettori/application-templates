@@ -5,10 +5,10 @@
         "annotations": {
             "description": "Application template for EAP 6 applications built using STI."
         },
-        "name": "eap6-basic-sti"
+        "name": "rettor-eap6-basic-sti"
     },
     "labels": {
-        "template": "eap6-basic-sti"
+        "template": "rettori-eap6-basic-sti"
     },
     "parameters": [
         {
@@ -90,13 +90,13 @@
                     }
                 ],
                 "selector": {
-                    "deploymentConfig": "${APPLICATION_NAME}"
+                    "deploymentConfig": "this-app"
                 }
             },
             "metadata": {
-                "name": "${APPLICATION_NAME}-http-service",
+                "name": "this-app-http-service",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 },
                 "annotations": {
                     "description": "The web server's http port."
@@ -114,13 +114,13 @@
                     }
                 ],
                 "selector": {
-                    "deploymentConfig": "${APPLICATION_NAME}"
+                    "deploymentConfig": "this-app"
                 }
             },
             "metadata": {
-                "name": "${APPLICATION_NAME}-https-service",
+                "name": "this-app-https-service",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 },
                 "annotations": {
                     "description": "The web server's https port."
@@ -139,13 +139,13 @@
                 ],
                 "portalIP": "None",
                 "selector": {
-                    "deploymentConfig": "${APPLICATION_NAME}"
+                    "deploymentConfig": "this-app"
                 }
             },
             "metadata": {
-                "name": "${APPLICATION_NAME}-ping",
+                "name": "this-app-ping",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 },
                 "annotations": {
                     "description": "Ping service for clustered applications."
@@ -155,34 +155,34 @@
         {
             "kind": "Route",
             "apiVersion": "v1beta1",
-            "id": "${APPLICATION_NAME}-http-route",
+            "id": "this-app-http-route",
             "metadata": {
-                "name": "${APPLICATION_NAME}-http-route",
+                "name": "this-app-http-route",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": this-app"
                 },
                 "annotations": {
                     "description": "Route for application's http service."
                 }
             },
-            "host": "${APPLICATION_HOSTNAME}",
-            "serviceName": "${APPLICATION_NAME}-http-service"
+            "host": "this-app",
+            "serviceName": "this-app-http-service"
         },
         {
             "kind": "Route",
             "apiVersion": "v1beta1",
-            "id": "${APPLICATION_NAME}-https-route",
+            "id": "this-app-https-route",
             "metadata": {
-                "name": "${APPLICATION_NAME}-https-route",
+                "name": "this-app-https-route",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 },
                 "annotations": {
                     "description": "Route for application's https service."
                 }
             },
             "host": "${APPLICATION_HOSTNAME}",
-            "serviceName": "${APPLICATION_NAME}-https-service",
+            "serviceName": "this-app-https-service",
             "tls": {
                 "termination" : "passthrough"
             }
@@ -191,9 +191,9 @@
             "kind": "ImageStream",
             "apiVersion": "v1beta1",
             "metadata": {
-                "name": "${APPLICATION_NAME}",
+                "name": "this-app",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 }
             }
         },
@@ -201,9 +201,9 @@
             "kind": "BuildConfig",
             "apiVersion": "v1beta1",
             "metadata": {
-                "name": "${APPLICATION_NAME}",
+                "name": "this-app",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 }
             },
             "triggers": [
@@ -251,7 +251,7 @@
                 },
                 "output": {
                     "to": {
-                        "name": "${APPLICATION_NAME}"
+                        "name": "this-app"
                     }
                 }
             }
@@ -260,9 +260,9 @@
             "kind": "DeploymentConfig",
             "apiVersion": "v1beta1",
             "metadata": {
-                "name": "${APPLICATION_NAME}",
+                "name": "this-app",
                 "labels": {
-                    "application": "${APPLICATION_NAME}"
+                    "application": "this-app"
                 }
             },
             "triggers": [
@@ -271,10 +271,10 @@
                     "imageChangeParams": {
                         "automatic": true,
                         "containerNames": [
-                            "${APPLICATION_NAME}"
+                            "this-app"
                         ],
                         "from": {
-                            "name": "${APPLICATION_NAME}"
+                            "name": "this-app"
                         },
                         "tag": "latest"
                     }
@@ -287,7 +287,7 @@
                 "controllerTemplate": {
                     "replicas": 1,
                     "replicaSelector": {
-                        "deploymentConfig": "${APPLICATION_NAME}"
+                        "deploymentConfig": "this-app"
                     },
                     "podTemplate": {
                         "desiredState": {
@@ -295,22 +295,22 @@
                                 "version": "v1beta1",
                                 "containers": [
                                     {
-                                        "name": "${APPLICATION_NAME}",
-                                        "image": "${APPLICATION_NAME}",
+                                        "name": "this-app",
+                                        "image": "this-app",
                                         "imagePullPolicy": "PullAlways",
                                         "ports": [
                                             {
-                                                "name": "${APPLICATION_NAME}-tcp-8080",
+                                                "name": "this-app-tcp-8080",
                                                 "containerPort": 8080,
                                                 "protocol": "TCP"
                                             },
                                             {
-                                                "name": "${APPLICATION_NAME}-tcp-8443",
+                                                "name": "this-app-tcp-8443",
                                                 "containerPort": 8443,
                                                 "protocol": "TCP"
                                             },
                                             {
-                                                "name": "${APPLICATION_NAME}-ping-8888",
+                                                "name": "this-app-ping-8888",
                                                 "containerPort": 8888,
                                                 "protocol": "TCP"
                                             }
@@ -318,7 +318,7 @@
                                         "env": [
                                             {
                                                 "name": "OPENSHIFT_PING_SERVICE",
-                                                "value": "${APPLICATION_NAME}-ping"
+                                                "value": "$this-app-ping"
                                             },
                                             {
                                                 "name": "OPENSHIFT_PING_NAMESPACE",
@@ -346,8 +346,8 @@
                             }
                         },
                         "labels": {
-                            "deploymentConfig": "${APPLICATION_NAME}",
-                            "application": "${APPLICATION_NAME}"
+                            "deploymentConfig": "this-app",
+                            "application": "this-app"
                         }
                     }
                 }
