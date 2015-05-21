@@ -318,7 +318,7 @@
                                         "env": [
                                             {
                                                 "name": "OPENSHIFT_PING_SERVICE",
-                                                "value": "$this-app-ping"
+                                                "value": "this-app-ping"
                                             },
                                             {
                                                 "name": "OPENSHIFT_PING_NAMESPACE",
