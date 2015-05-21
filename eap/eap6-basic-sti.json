@@ -5,7 +5,7 @@
         "annotations": {
             "description": "Application template for EAP 6 applications built using STI."
         },
-        "name": "rettor-eap6-basic-sti"
+        "name": "rettori-eap6-basic-sti"
     },
     "labels": {
         "template": "rettori-eap6-basic-sti"
