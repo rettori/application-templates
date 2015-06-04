@@ -18,11 +18,11 @@
                 }
             },
             "spec": {
-                "dockerImageRepository": "registry.access.redhat.com/jboss-webserver-3/tomcat7-openshift",
+                "dockerImageRepository": "ce-registry.usersys.redhat.com/jboss-webserver-3/tomcat7-openshift",
                 "tags": [
                     {
                         "name": "3.0",
-                        "dockerImageReference": "registry.access.redhat.com/jboss-webserver-3/tomcat7-openshift:3.0"
+                        "dockerImageReference": "ce-registry.usersys.redhat.com/jboss-webserver-3/tomcat7-openshift:3.0"
                     }
                 ]
             }
@@ -37,11 +37,11 @@
                 }
             },
             "spec": {
-                "dockerImageRepository": "registry.access.redhat.com/jboss-webserver-3/tomcat8-openshift",
+                "dockerImageRepository": "ce-registry.usersys.redhat.com/jboss-webserver-3/tomcat8-openshift",
                 "tags": [
                     {
                         "name": "3.0",
-                        "dockerImageReference": "registry.access.redhat.com/jboss-webserver-3/tomcat8-openshift:3.0"
+                        "dockerImageReference": "ce-registry.usersys.redhat.com/jboss-webserver-3/tomcat8-openshift:3.0"
                     }
                 ]
             }
@@ -56,11 +56,11 @@
                 }
             },
             "spec": {
-                "dockerImageRepository": "registry.access.redhat.com/jboss-eap-6/eap-openshift",
+                "dockerImageRepository": "ce-registry.usersys.redhat.com/jboss-eap-6/eap-openshift",
                 "tags": [
                     {
                         "name": "6.4",
-                        "dockerImageReference": "registry.access.redhat.com/jboss-eap-6/eap-openshift:6.4"
+                        "dockerImageReference": "ce-registry.usersys.redhat.com/jboss-eap-6/eap-openshift:6.4"
                     }
                 ]
             }
@@ -75,11 +75,11 @@
                 }
             },
             "spec": {
-                "dockerImageRepository": "registry.access.redhat.com/jboss-amq-6/amq:6.2",
+                "dockerImageRepository": "ce-registry.usersys.redhat.com/jboss-amq-6/amq:6.2",
                 "tags": [
                     {
                         "name": "latest",
-                        "dockerImageReference": "registry.access.redhat.com/jboss-amq-6/amq:6.2"
+                        "dockerImageReference": "ce-registry.usersys.redhat.com/jboss-amq-6/amq:6.2"
                     }
                 ]
             }
